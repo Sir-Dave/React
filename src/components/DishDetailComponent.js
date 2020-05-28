@@ -23,14 +23,6 @@ function RenderDish({dish}){
     }
 }
     
-function componentDidMount(){
-        console.log("DishDetail Component componentDidMount method invoked")
-    }
-    
-function componentDidUpdate(){
-        console.log("DishDetail Component componentDidUpdate method invoked")
-    }
-    
 function RenderComments({comments}){
         if (comments!= null){
             const comments_list = comments.map(comment => {
