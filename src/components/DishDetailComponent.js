@@ -1,31 +1,37 @@
-import React, { Component } from "react";
+import React from "react";
 import { Card, CardImg, CardBody, CardText, CardTitle } from "reactstrap";
-
-class DishDetail extends Component{
    
-    renderDish(dish){
-        if (dish != null){
-            return(
-            <div className="col-12 col-md-5 m-1">
-                <Card>
-                    <CardImg width="100%" src={dish.image} alt={dish.name}/>
-                    <CardBody>
-                        <CardTitle>{dish.name}</CardTitle>
-                        <CardText>{dish.description}</CardText>
-                    </CardBody>
-                </Card>
-            </div>
-            )   
-        }
-        
-        else{
-            return(
-                <div></div>
-            );
-        }
+function RenderDish({dish}){
+    if (dish != null){
+        return(
+        <div className="col-12 col-md-5 m-1">
+            <Card>
+                <CardImg width="100%" src={dish.image} alt={dish.name}/>
+                <CardBody>
+                    <CardTitle>{dish.name}</CardTitle>
+                    <CardText>{dish.description}</CardText>
+                </CardBody>
+            </Card>
+        </div>
+        )   
+    }
+
+    else{
+        return(
+            <div></div>
+        );
+    }
+}
+    
+function componentDidMount(){
+        console.log("DishDetail Component componentDidMount method invoked")
     }
     
-    renderComments(comments){
+function componentDidUpdate(){
+        console.log("DishDetail Component componentDidUpdate method invoked")
+    }
+    
+function RenderComments({comments}){
         if (comments!= null){
             const comments_list = comments.map(comment => {
             return(        
@@ -55,25 +61,25 @@ class DishDetail extends Component{
 
     }
     
-    render(){
-        const dish = this.props.dish;
+const DishDetail = (props)=>{
+        const dish = props.dish;
         /**The page returns null if this is not included*/
         if (dish == null) {    
             return (
                 <div></div>
             )
-        }
-        
-        const dishItem = this.renderDish(dish)
-        const commentItem = this.renderComments(dish.comments)
+        } 
+    
+        console.log("DishDetail Component render method invoked")
               
         
         return(
-                <div className="row">
-                    {dishItem}
-                    {commentItem}
-                </div>   
+               <div className="container">
+                     <div className="row">
+                        <RenderDish dish= {dish}/>
+                        <RenderComments comments={dish.comments}/>
+                    </div>
+                </div>
         )
     }
-}
  export default DishDetail;
