@@ -20,12 +20,6 @@ function RenderLeader({leader}){
     )
 }
 
-function RenderMe({leader}){
-    return(
-      <p>{leader.name}</p>
-    )
-}
-
 function About(props) {
 
     const leaders = props.leaders.map((leader) => {
