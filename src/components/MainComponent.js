@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Home from './HomeComponent.js'
 import Menu from './MenuComponent.js';
+import About from './AboutComponent.js';
 import DishDetail from './DishDetailComponent.js';
 import Contact from './ContactComponent.js';
 import { DISHES } from '../shared/dishes.js';
@@ -19,7 +20,7 @@ class Main extends Component{
         this.state = {
             dishes: DISHES,
             comments: COMMENTS,
-            leaders : LEADERS,
+            leaders: LEADERS,
             promotions : PROMOTIONS
         };
     }
@@ -47,6 +48,7 @@ class Main extends Component{
                     <Route path="/home" component={HomePage}/>                     
                     <Route exact path="/menu" component={()=> <Menu dishes={this.state.dishes} /> }/>
                     <Route path="/menu/:dishId" component={DishWithId}/>
+                    <Route path="/aboutus" component={()=> <About leaders={this.state.leaders}/>}/>
                     <Route exact path ="/contactus" component={Contact}/>
                     <Redirect to="/home"/>
                 </Switch>
